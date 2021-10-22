@@ -1,9 +1,12 @@
 const express = require('express')
 const dotenv = require('dotenv')
-dotenv.config()
 const mongoose = require('mongoose')
+const authRoutes = require('./routes/authRoutes')
+
+dotenv.config()
 
 const app = express()
+app.use(authRoutes)
 
 const mongoUri = `mongodb+srv://${process.env.MONGOUSER}:${process.env.PASSWORD}@trackingcluster.taecc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 mongoose.connect(mongoUri)
