@@ -2,10 +2,13 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const authRoutes = require('./routes/authRoutes')
+const bodyParser = require('body-parser')
 
 dotenv.config()
 
 const app = express()
+
+app.use(bodyParser.json())
 app.use(authRoutes)
 
 const mongoUri = `mongodb+srv://${process.env.MONGOUSER}:${process.env.PASSWORD}@trackingcluster.taecc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
